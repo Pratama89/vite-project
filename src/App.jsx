@@ -9,9 +9,9 @@ function App() {
   }
 
   return (
-    <div>
+    <div >
       <Header />
-      <button onClick={handleClick}>Like ({likes})</button>
+      <button onClick={handleClick} className=" border flex justify-center mx-auto mt-5 w-20 h-10 rounded-md bg-slate-500 text-white items-center hover:bg-slate-600">Like ({likes})</button>
     </div>
   );
 }
