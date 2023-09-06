@@ -1,20 +1,33 @@
-import { useState } from 'react';
-import Header from './components/Header';
-import Button from './components/Login';
+/* eslint-disable no-unused-vars */
+import React from 'react';
+import Button from './components/Elements/Input/input';
+import InputForm from './components/Elements/Input';
 
 function App() {
-  const [likes, setLikes] = useState(0);
-
-  function handleClick() {
-    setLikes(likes + 1);
-  }
-
   return (
-    <div >
-      <Header />
-      <button onClick={handleClick} className=" border flex justify-center mx-auto mt-5 w-20 h-10 rounded-md bg-slate-500 text-white items-center hover:bg-slate-600">Like ({likes})</button>
+    <div className='flex justify-center min-h-screen items-center  '>
+      <div className='w-full max-w-md border p-10 shadow-md rounded-lg  '>
+        <h1 className='text-3xl font-bold mb-2 text-blue-600 '>Login</h1>
+        <p className='font-medium text-slate-500 mb-8'>Selamat Datang, Silahkan isi Data</p>
+        <form action="">
+          <InputForm 
+          label="Email" 
+          type="email" 
+          placeholder="example@gmail.com"
+          name="ëmail" 
+          />  
 
-      <Button></Button>
+          <InputForm 
+          label="Password" 
+          type="password" 
+          placeholder="*****"
+          name="password" 
+          />          
+                     
+          
+          <Button variant="bg-blue-500 w-full ">Login</Button>
+        </form>
+      </div>
     </div>
   );
 }

@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-export default function Button () {
+const Input = (props) => {
+    const { type, placeholder} = props;
     return (
-      <button 
-        className={`h-10 px-6 border rounded-md bg-blue-600 text-white flex mx-auto mt-10 items-center `} type='submit'
-      >
-        Login
-      </button>
-    )
-  }
+        <input type={type} className='text-sm border rounded w-full py-2 px-3 text-slate-700 placeholder: opacity-80 hover:ring-1 hover:ring-slate-700' placeholder={placeholder} />
+        
+    );
+  };
+
+  export default Input;
