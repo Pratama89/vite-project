@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import Button from './components/Elements/Input/input';
-import InputForm from './components/Elements/Input';
+import Button from './components/Elements/Button';
+import InputForm from './components/Elements/Input/Input';
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
       <div className='w-full max-w-md border p-10 shadow-md rounded-lg  '>
         <h1 className='text-3xl font-bold mb-2 text-blue-600 '>Login</h1>
         <p className='font-medium text-slate-500 mb-8'>Selamat Datang, Silahkan isi Data</p>
+
         <form action="">
           <InputForm 
           label="Email" 
