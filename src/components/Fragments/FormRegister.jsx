@@ -1,9 +1,15 @@
 import Button from "../Elements/Button";
 import InputForm from "../Elements/Input";
 
-const FormLogin = () => {
+const FormRegister = () => {
     return (
         <form action="">
+          <InputForm 
+          label="Full Name" 
+          type="text" 
+          placeholder="masukkan nama anda"
+          name="fullname" 
+          />
           <InputForm 
           label="Email" 
           type="email" 
@@ -16,9 +22,15 @@ const FormLogin = () => {
           placeholder="*****"
           name="password" 
           />
-          <Button ClassName="bg-blue-600 w-full ">Login</Button>
+          <InputForm  
+          label="Confirm Password" 
+          type="password" 
+          placeholder="*****"
+          name="confirmPassword" 
+          />
+          <Button ClassName="bg-blue-600 w-full ">Register</Button>
         </form>
     )
 }
 
-export default FormLogin;
+export default FormRegister;
