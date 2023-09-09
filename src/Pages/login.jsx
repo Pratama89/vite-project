@@ -3,15 +3,10 @@ import AuthLayout from "../components/Layouts/AuthLayout";
 
 const LoginPage = () => {
     return (
-        <AuthLayout title="Login">
+        <AuthLayout title="Login" type="login">
             <FormLogin />
             <div className="flex justify-center flex-col items-center">
-                <p className="mt-3 ">Anda belum punya akun?</p>
-                <p className="mt-3 text-blue-700">
-                  <a href="register">
-                  Daftar
-                  </a> 
-                </p>
+                
             </div>            
         </AuthLayout>
     )

@@ -12,7 +12,9 @@ const InputForm = (props) => {
             
             name={name} 
             type={type} 
-            placeholder={placeholder} />
+            placeholder={placeholder}
+             
+            />
         </div>
     );
 };
