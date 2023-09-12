@@ -1,50 +1,61 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import Button from "../Elements/Button";
 
-const CardProduct = () => {
+const CardProduct = (props) => {
+  const { children } = props
     return (
-      <div className="border text-center w-64 h-full mx-auto mt-2 rounded-md shadow-md ">
+      <div className="border text-center w-64 h-full mt-2 rounded-md shadow-md mx-2">
       
-        <Header />
-        <Body />
-        <Footer />
+        {children}
             
-    </div>
+      </div>
     );
 };
 
 
-const Header = () => {
+const Header = (props) => {
+  const { image } = props
   return (
     <div className="mt-3">
         <h1 className="font-bold">Produk</h1>
         <div className="max-w-sm  mt-5 mx-2 mb-5 ">
             <a href="https://www.tokopedia.com/pharmadent/dental-lab-vacuum-former-forming-molding-machine-equipment">
-            <img src="/img/Vacuum.png" alt="product" className="rounded-md bg-blue-300" />
+            <img src={image} alt="product" className="rounded-md bg-blue-300" />
             </a>
           </div>
       </div>
   )
 }
 
-const Body = () => {
+const Body = (props) => {
+  const {children, title} = props;
   return (
-    <div className="mt-2 text-sm px-2">
-      <h2 className="text-xl font-semibold">Vacuum</h2>
-      <p className="mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni natus cupiditate earum eum, tenetur laudantium.</p>
+    <div className="mt-2 mb-2 text-sm px-2">
+      <h2 className="text-xl font-semibold">{title}</h2>
+      <p className="mt-2">
+        {children}
+      </p>
     </div>
   )
 }
 
-const Footer = () => {
+const Footer = (props) => {
+  const { price } = props;
   return (
     <>
     <div className="flex items-center justify-center">
-      <span className="text-3xl font-bold ">1.825.000</span>
+      <span className="text-3xl font-bold ">{price}</span>
     </div>
       <Button ClassName="bg-blue-500 hover:bg-blue-600 mb-4" >Masuk ke Keranjang</Button>
     </>
     )
 }
+
+CardProduct.Header = Header;
+CardProduct.Body = Body;
+CardProduct.Footer = Footer;
+
 
 
 export default CardProduct;
