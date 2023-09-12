@@ -20,6 +20,13 @@ const ProductsPage = () => {
             </div>
         </div>
     </div>
+    // return (
+    // <CardProduct>
+    //     <CardProduct.Header></CardProduct.Header>
+    //     <CardProduct.Body></CardProduct.Body>
+    //     <CardProduct.Footer></CardProduct.Footer>
+    // </CardProduct>
+        
     )
 }
 
