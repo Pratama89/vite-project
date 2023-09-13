@@ -5,7 +5,7 @@ import Button from "../Elements/Button";
 const CardProduct = (props) => {
   const { children } = props
     return (
-      <div className="border text-center w-64 h-full mt-2 rounded-md shadow-md mx-2">
+      <div className="border text-center w-full max-w-xs mt-2 rounded-md shadow-md mx-2 flex flex-col justify-between ">
       
         {children}
             
@@ -29,10 +29,10 @@ const Header = (props) => {
 }
 
 const Body = (props) => {
-  const {children, title} = props;
+  const {children, name} = props;
   return (
-    <div className="mt-2 mb-2 text-sm px-2">
-      <h2 className="text-xl font-semibold">{title}</h2>
+    <div className="mt-2 mb-2 text-sm px-2 h-full">
+      <h2 className="text-xl font-semibold">{name}</h2>
       <p className="mt-2">
         {children}
       </p>
@@ -47,7 +47,7 @@ const Footer = (props) => {
     <div className="flex items-center justify-center">
       <span className="text-3xl font-bold ">{price}</span>
     </div>
-      <Button ClassName="bg-blue-500 hover:bg-blue-600 mb-4" >Masuk ke Keranjang</Button>
+      <Button ClassName="bg-blue-500 hover:bg-blue-600 mb-4 p-2" >Masuk ke Keranjang</Button>
     </>
     )
 }
