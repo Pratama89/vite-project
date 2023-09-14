@@ -2,13 +2,19 @@ import Button from "../Elements/Button";
 import InputForm from "../Elements/Input";
 
 const FormLogin = () => {
+  const handleLogin = (event) => 
+  {
+    event.preventDefault();
+    console.log(event.target.email.value);
+    console.log("Login");
+  }
     return (
-        <form action="">
+        <form onSubmit={handleLogin}>
           <InputForm 
           label="Email" 
           type="email" 
           placeholder="example@gmail.com"
-          name="ëmail" 
+          name="email" 
           />
           <InputForm  
           label="Password" 
@@ -16,7 +22,8 @@ const FormLogin = () => {
           placeholder="*****"
           name="password" 
           />
-          <Button ClassName="bg-blue-600 w-full ">Login</Button>
+          <Button ClassName="bg-blue-600 w-full" type="submit"
+          >Login</Button>
         </form>
     )
 }
