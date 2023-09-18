@@ -5,7 +5,7 @@ const FormLogin = () => {
   const handleLogin = (event) => 
   {
     event.preventDefault();
-    console.log(event.target.email.value);
+    console.log(event.target.gemail.value);
     console.log("Login");
   }
     return (
