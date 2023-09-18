@@ -1,5 +1,8 @@
 /* eslint-disable react/jsx-key */
+import { Fragment } from "react";
+import Button from "../components/Elements/Button";
 import CardProduct from "../components/Fragments/CardProduct";
+import Counter from "../components/Fragments/Counter";
 
 const products = [
     {
@@ -25,8 +28,26 @@ const products = [
     },
 ];
 
+const email = localStorage.getItem("email");
+
 const ProductsPage = () => {
+
+const handleLogout = () => {
+  localStorage.removeItem('email');
+  localStorage.removeItem('password');
+  window.location.href = "/login";
+}
+
     return (
+      <Fragment>
+
+        <div className="flex justify-end items-center  h-14">
+          {email}
+          <div className="px-5">          
+            <Button ClassName="bg-blue-500" onClick={handleLogout}>Logout</Button>
+          </div>        
+        </div>
+
         <div className=" flex justify-center py-5 flex-wrap">
             {products.map((product) => (
                 <CardProduct key={product.id}>
@@ -38,6 +59,12 @@ const ProductsPage = () => {
                 </CardProduct>
             ))}
         </div>
+
+        <div className="flex justify-center">
+          <Counter></Counter>
+        </div>
+
+        </Fragment>
     );
 };
 
