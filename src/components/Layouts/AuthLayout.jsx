@@ -13,18 +13,7 @@ const AuthLayout = (props) => {
 
           { children }
           <Navigation type={type} />
-          {/* <p className="mt-3 text-center">
-            {type === "login" 
-            ? "Anda tidak punya akun? " 
-            : "Anda punya akun? "}
           
-             {type === "login" && (
-                <Link to="/register" className="mt-3 text-blue-700 text-center font-bold"> Daftar</Link>
-             )}
-             {type === "register" && (
-                <Link to="/login" className="mt-3 text-blue-700 text-center font-bold"> Login</Link>
-             )}
-          </p> */}
 
           </div>
       </div>
