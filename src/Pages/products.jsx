@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 import { Fragment, useState } from "react";
@@ -32,12 +33,8 @@ const email = localStorage.getItem("email");
 
 const ProductsPage = () => {
 
-const [cart, setCart] = useState([
-  {
-    id: 1,
-    qty: 1,
-  }
-]);
+const [cart, setCart] = useState([]);
+const [totalPrice, setTotalPrice] = useState(0);
 
 const handleLogout = () => {
   localStorage.removeItem('email');
@@ -116,9 +113,24 @@ const handleAddToCart = (id) => {
                           styles: "currency", 
                           currency: "IDR"
                         })}</td>
-                    </tr>
+                    </tr>                    
                   )
                 })}
+                <tr>
+                  <td colSpan={3}><b>Total Price</b></td>
+                  <td>
+                    <b>
+                    Rp {" "}
+                    {totalPrice.toLocaleString('id-ID', 
+                        {
+                          styles: "currency", 
+                          currency: "IDR",
+                        })
+                    }
+                    </b>
+                  </td>
+                </tr>
+
               </tbody>
             </table>
           </div>
