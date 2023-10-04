@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Button from "../components/Elements/Button";
 import CardProduct from "../components/Fragments/CardProduct";
+import Counter from "../components/Fragments/Counter";
 
 const products = [
     {
@@ -35,6 +36,21 @@ const ProductsPage = () => {
 
 const [cart, setCart] = useState([]);
 const [totalPrice, setTotalPrice] = useState(0);
+useEffect(() => {
+  setCart(JSON.parse(localStorage.getItem("cart")) || []);
+}, []);
+
+useEffect(() => {
+  if(cart.length > 0) {
+    const sum = cart.reduce((acc, item) => {
+      const product = products.find((product) => product.id === item.id);
+      return acc + product.price * item.qty;
+    }, 0)
+    setTotalPrice(sum);
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+}, [cart]);
+
 
 const handleLogout = () => {
   localStorage.removeItem('email');
@@ -81,6 +97,7 @@ const handleAddToCart = (id) => {
                     />
                 </CardProduct>
             ))}
+            <Counter />
           </div>
           <div className="w-2/6">
             <h1 className="text-3xl font-bold text-blue-600 ml-5 mb-2">Cart</h1>
@@ -134,9 +151,7 @@ const handleAddToCart = (id) => {
               </tbody>
             </table>
           </div>
-        </div>
-
-        
+        </div>       
 
         </Fragment>
     );

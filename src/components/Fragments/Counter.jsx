@@ -7,11 +7,12 @@ class Counter extends React.Component {
         this.state = {
             count: 0,
         }
+        console.log("constructor");
     }
 
     componentDidMount(){
         this.setState({ count: 1});
-
+        console.log("componentDidMount");
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -20,9 +21,10 @@ class Counter extends React.Component {
             this.setState({ count: 5});
         }
     }
+
     render() {
         return (
-            <div className="flex items-center mb-5">
+            <div className="flex items-center mb-5 mt-4 mx-auto">
                 <h1 className="mr-5">{this.state.count}</h1>
                 <button className="bg-black text-white p-2" onClick={() => this.setState({ count: this.state.count + 1})} 
                 >
