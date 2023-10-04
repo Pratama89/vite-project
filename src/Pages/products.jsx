@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import Button from "../components/Elements/Button";
 import CardProduct from "../components/Fragments/CardProduct";
 import Counter from "../components/Fragments/Counter";
@@ -70,6 +70,14 @@ const handleAddToCart = (id) => {
     ]
     );
  }
+};
+
+// useRef
+const cartRef = useRef(JSON.parse(localStorage.getItem("cart")) || []);
+
+const handleAddToCartRef = (id) => {
+  cartRef.current = [...cartRef.current, {id, qty: 1}];
+  localStorage.setItem("cart", JSON.stringify(cartRef.current));
 }
 
     return (
@@ -97,7 +105,7 @@ const handleAddToCart = (id) => {
                     />
                 </CardProduct>
             ))}
-            <Counter />
+            {/* <Counter /> */}
           </div>
           <div className="w-2/6">
             <h1 className="text-3xl font-bold text-blue-600 ml-5 mb-2">Cart</h1>
