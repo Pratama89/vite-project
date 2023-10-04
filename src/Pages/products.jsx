@@ -80,6 +80,15 @@ const handleAddToCartRef = (id) => {
   localStorage.setItem("cart", JSON.stringify(cartRef.current));
 }
 
+const totalPriceRef = useRef(null);
+useEffect(() => {
+  if(cart.length > 0) {
+    totalPriceRef.current.style.display = "table-row";
+  } else {
+    totalPriceRef.current.style.display = "none";
+  }
+}, [cart]);
+
     return (
       <Fragment>
 
@@ -125,15 +134,15 @@ const handleAddToCartRef = (id) => {
                   return (
                     <tr key={item.id}>
                       <td>{product.name}</td>
-                      <td>Rp{" "}  
+                      <td className="text-right">Rp{" "}  
                       {product.price.toLocaleString('id-ID', 
                         {
                           styles: "currency", 
                           currency: "IDR"
                         })}
                       </td>
-                      <td>{item.qty}</td>
-                      <td>Rp  {(item.qty * product.price).toLocaleString('id-ID', 
+                      <td className="text-center">{item.qty}</td>
+                      <td className="text-right">Rp  {(item.qty * product.price).toLocaleString('id-ID', 
                         {
                           styles: "currency", 
                           currency: "IDR"
@@ -141,7 +150,7 @@ const handleAddToCartRef = (id) => {
                     </tr>                    
                   )
                 })}
-                <tr>
+                <tr ref={totalPriceRef}>
                   <td colSpan={3}><b>Total Price</b></td>
                   <td>
                     <b>
