@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
+import { forwardRef } from "react";
 import Input from "./Input"; 
 import Label from "./Label" ;
 
 
-const InputForm = (props) => {
+const InputForm = forwardRef ((props, ref) => {
     const { label, name, type, placeholder } = props;
     return (
         <div className="mb-4">
@@ -13,10 +14,10 @@ const InputForm = (props) => {
             name={name} 
             type={type} 
             placeholder={placeholder}
-             
+             ref={ref}
             />
         </div>
     );
-};
+})
 
 export default InputForm;

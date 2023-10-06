@@ -5,6 +5,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import Button from "../components/Elements/Button";
 import CardProduct from "../components/Fragments/CardProduct";
 import Counter from "../components/Fragments/Counter";
+import { getProduct } from "../services/product.service";
 
 const products = [
     {
@@ -36,11 +37,18 @@ const ProductsPage = () => {
 
 const [cart, setCart] = useState([]);
 const [totalPrice, setTotalPrice] = useState(0);
+
 useEffect(() => {
   setCart(JSON.parse(localStorage.getItem("cart")) || []);
 }, []);
 
 useEffect(() => {
+  getProduct((data) => {
+    console.log(data);
+  });
+}, []);
+
+useEffect (() => {
   if(cart.length > 0) {
     const sum = cart.reduce((acc, item) => {
       const product = products.find((product) => product.id === item.id);
@@ -88,6 +96,8 @@ useEffect(() => {
     totalPriceRef.current.style.display = "none";
   }
 }, [cart]);
+
+
 
     return (
       <Fragment>
