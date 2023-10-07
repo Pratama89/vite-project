@@ -16,7 +16,7 @@ const FormLogin = () => {
       password: event.target.password.value,
     };
 
-    login();
+    login(data);
   };
   const usernameRef = useRef(null);
 
