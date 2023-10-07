@@ -7,29 +7,7 @@ import CardProduct from "../components/Fragments/CardProduct";
 import Counter from "../components/Fragments/Counter";
 import { getProduct } from "../services/product.service";
 
-const products = [
-    {
-        id: 1,
-        name: "Vacuum Retainer",
-        price: 1380000,
-        image: "/img/Vacuum.png",
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam earum quae voluptates, pariatur soluta ipsa facere! Iusto eveniet quo repellendus laborum, saepe alias aspernatur repudiandae.`
-    },
-    {
-        id: 2,
-        name: "Hygedent",
-        price: 57000,
-        image: "/img/Vacuum.png",
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam earum quae voluptates`
-    },
-    {
-        id: 3,
-        name: "Stone Biru 11 Menit",
-        price: 35000,
-        image: "/img/Vacuum.png",
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam earum quae voluptates`
-    },
-];
+
 
 const email = localStorage.getItem("email");
 
@@ -37,6 +15,7 @@ const ProductsPage = () => {
 
 const [cart, setCart] = useState([]);
 const [totalPrice, setTotalPrice] = useState(0);
+const [products, setProducts] = useState([]);
 
 useEffect(() => {
   setCart(JSON.parse(localStorage.getItem("cart")) || []);
@@ -44,12 +23,12 @@ useEffect(() => {
 
 useEffect(() => {
   getProduct((data) => {
-    console.log(data);
+    setProducts(data);
   });
 }, []);
 
 useEffect (() => {
-  if(cart.length > 0) {
+  if(products.length > 0 && cart.length > 0) {
     const sum = cart.reduce((acc, item) => {
       const product = products.find((product) => product.id === item.id);
       return acc + product.price * item.qty;
@@ -57,7 +36,7 @@ useEffect (() => {
     setTotalPrice(sum);
     localStorage.setItem("cart", JSON.stringify(cart));
   }
-}, [cart]);
+}, [cart, products]);
 
 
 const handleLogout = () => {
@@ -111,10 +90,10 @@ useEffect(() => {
 
         <div className=" flex justify-center py-5">
           <div className="w-4/6 flex flex-wrap">
-            {products.map((product) => (
+            {products.length > 0 && products.map((product) => (
                 <CardProduct key={product.id}>
                     <CardProduct.Header image={product.image} />
-                    <CardProduct.Body name={product.name}>
+                    <CardProduct.Body name={product.title}>
                         {product.description}
                     </CardProduct.Body>
                     <CardProduct.Footer 
@@ -139,11 +118,11 @@ useEffect(() => {
                 </tr>
               </thead>
               <tbody>
-                {cart.map((item) => {
+                {products.length > 0 && cart.map((item) => {
                   const product = products.find((product) => product.id === item.id);
                   return (
                     <tr key={item.id}>
-                      <td>{product.name}</td>
+                      <td>{product.title.substring(0, 20)}</td>
                       <td className="text-right">Rp{" "}  
                       {product.price.toLocaleString('id-ID', 
                         {

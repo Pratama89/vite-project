@@ -21,7 +21,7 @@ const Header = (props) => {
         <h1 className="font-bold">Produk</h1>
         <div className="max-w-sm  mt-5 mx-2 mb-5 ">
             <a href="https://www.tokopedia.com/pharmadent/dental-lab-vacuum-former-forming-molding-machine-equipment">
-            <img src={image} alt="product" className="rounded-md bg-blue-300" />
+            <img src={image} alt="product" className="rounded-md bg-white h-60 w-full object-contain" />
             </a>
           </div>
       </div>
@@ -32,9 +32,9 @@ const Body = (props) => {
   const {children, name} = props;
   return (
     <div className="mt-2 mb-2 text-sm px-2 h-full">
-      <h2 className="text-xl font-semibold">{name}</h2>
+      <h2 className="text-xl font-semibold">{name.substring(0, 30)} ...</h2>
       <p className="mt-2">
-        {children}
+        {children.substring(0, 100)} ...
       </p>
     </div>
   )
