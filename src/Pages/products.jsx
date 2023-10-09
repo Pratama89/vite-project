@@ -6,20 +6,34 @@ import Button from "../components/Elements/Button";
 import CardProduct from "../components/Fragments/CardProduct";
 import Counter from "../components/Fragments/Counter";
 import { getProduct } from "../services/product.service";
+import { getUsername } from "../services/auth.service";
 
 
 
-const email = localStorage.getItem("email");
+// const email = localStorage.getItem("email");
+
 
 const ProductsPage = () => {
 
 const [cart, setCart] = useState([]);
 const [totalPrice, setTotalPrice] = useState(0);
 const [products, setProducts] = useState([]);
+const [username, setUsername] = useState("");
 
 useEffect(() => {
   setCart(JSON.parse(localStorage.getItem("cart")) || []);
 }, []);
+
+useEffect(() => {
+  // getUsername(token);  
+  const token = localStorage.getItem("token");
+  if (token) {
+    setUsername(getUsername(token));
+  } else {
+    window.location.href = "/login";
+  }
+  
+})
 
 useEffect(() => {
   getProduct((data) => {
@@ -40,7 +54,7 @@ useEffect (() => {
 
 
 const handleLogout = () => {
-  localStorage.removeItem('email');
+  localStorage.removeItem('token');
   localStorage.removeItem('password');
   window.location.href = "/login";
 };
@@ -82,7 +96,7 @@ useEffect(() => {
       <Fragment>
 
         <div className="flex justify-end items-center  h-14">
-          {email}
+          <p className="text-xl font-bold capitalize">{username}</p>
           <div className="px-5">          
             <Button ClassName="bg-blue-500" onClick={handleLogout}>Logout</Button>
           </div>        

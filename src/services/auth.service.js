@@ -1,9 +1,17 @@
 import axios from "axios";
-
-export const login = (data) => {
-    axios.post("https://fakestoreapi.com/auth/login", data).then((res) => {
-        console.log(res);
-    }).catch((err) => {
-        console.log(err);
+import jwt_decode from "jwt-decode";
+export const login = (data, callback) => {
+    axios
+    .post("https://fakestoreapi.com/auth/login", data)
+    .then((res) => {
+        // 
+        callback(true, res.data.token)
+    })
+    .catch((error) => {
+        callback(false, error);
     });
 };
+export const getUsername = (token) => {
+    const decoded = jwt_decode(token);
+    return decoded.user;
+}
