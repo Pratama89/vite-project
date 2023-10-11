@@ -7,7 +7,7 @@ import { login } from "../../services/auth.service";
 
 
 const FormLogin = () => {
-  const [loginFailed, setLoginFailed] = useState({});
+  const [loginFailed, setLoginFailed] = useState([]);
   const handleLogin = (event) => 
   {
     event.preventDefault();
