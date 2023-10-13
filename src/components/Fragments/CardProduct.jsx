@@ -2,17 +2,19 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import Button from "../Elements/Button";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slices/cartSlice";
 
-const CardProduct = (props) => {
-  const { children } = props
-    return (
-      <div className="border text-center w-full max-w-xs mt-2 rounded-md shadow-md mx-2 flex flex-col justify-between ">
-      
-        {children}
-            
-      </div>
-    );
-};
+function CardProduct(props) {
+  const { children } = props;
+  return (
+    <div className="border text-center w-full max-w-xs mt-2 rounded-md shadow-md mx-2 flex flex-col justify-between ">
+
+      {children}
+
+    </div>
+  );
+}
 
 
 const Header = (props) => {
@@ -42,7 +44,8 @@ const Body = (props) => {
 }
 
 const Footer = (props) => {
-  const { price, handleAddToCart, id } = props;
+  const { price, id } = props;
+  const dispatch = useDispatch();
   return (
     <>
     <div className="flex items-center justify-center">
@@ -50,7 +53,7 @@ const Footer = (props) => {
     </div>
       <Button 
       ClassName="bg-blue-500 hover:bg-blue-600 mb-4 p-2" 
-      onClick={() => handleAddToCart(id)}>
+      onClick={() => dispatch(addToCart({id, qty: 1})) }>
         Masuk ke Keranjang
       </Button>
     </>
