@@ -3,7 +3,7 @@ import { useLogin } from "../hooks/useLogin";
 const ProfilePage = () => {
     const username = useLogin();
     return (
-        <div className="text-center font-bold text-2xl">
+        <div className="text-center font-bold text-2xl mt-5">
             <h1>Profile</h1>
             <h1 className="text-2xl text-blue-600">
             Username: 
